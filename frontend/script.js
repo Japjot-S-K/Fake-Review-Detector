@@ -1,18 +1,38 @@
 async function analyze() {
-  const review = document.getElementById("review").value;
+  const review = document.getElementById("review").value.trim();
+  if (!review) return;
 
-  const response = await fetch("https://fake-review-detector-f0wz.onrender.com/analyze", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ review })
-  });
+  document.getElementById("loading").classList.remove("hidden");
+  document.getElementById("result").classList.add("hidden");
 
-  const data = await response.json();
+  try {
+    const response = await fetch("https://fake-review-detector-f0wz.onrender.com/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ review })
+    });
 
-  document.getElementById("result").innerHTML = `
-    <p>Repetition Score: ${data.repetition_score}</p>
-    <p>Sentiment Score: ${data.sentiment_score}</p>
-    <p><b>Credibility Score: ${data.credibility_score}</b></p>
-    <p>Status: ${data.is_suspicious ? "⚠️ Suspicious" : "✅ Genuine"}</p>
-  `;
+    const data = await response.json();
+
+    document.getElementById("credibility").innerText = data.credibility_score;
+    document.getElementById("rep").innerText = data.repetition_score;
+    document.getElementById("sent").innerText = data.sentiment_score;
+
+    const status = document.getElementById("status");
+    if (data.is_suspicious) {
+      status.innerText = "Suspicious";
+      status.style.color = "#ef4444";
+    } else {
+      status.innerText = "Genuine";
+      status.style.color = "#22c55e";
+    }
+
+    document.getElementById("result").classList.remove("hidden");
+
+  } catch (err) {
+    alert("Backend is waking up, please try again in a few seconds.");
+  } finally {
+    document.getElementById("loading").classList.add("hidden");
+  }
 }
+

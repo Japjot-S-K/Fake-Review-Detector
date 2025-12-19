@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Fake Review Detector</title>
+  <title>ReviewGuard • Fake Review Intelligence</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <h1>🕵️ Fake Review Detector</h1>
-  <span class="status online">API Online</span>
-</header>
+<nav class="navbar">
+  <div class="logo">🕵️ ReviewGuard</div>
+  <ul>
+    <li onclick="showSection('detect')">Fake Review Detector</li>
+    <li onclick="showSection('rewrite')">Make Review Genuine</li>
+    <li onclick="showSection('contact')">Contact Us</li>
+  </ul>
+</nav>
 
 <main>
-  <div class="card">
+
+  <!-- Fake Review Detector -->
+  <section id="detect" class="section active">
+    <h2>Fake Review Detector</h2>
 
     <textarea id="review" placeholder="Paste a product review here..."></textarea>
-
     <button onclick="analyze()">Analyze Review</button>
 
     <div id="loading" class="hidden">Analyzing review...</div>
@@ -34,12 +40,32 @@
         <p>Sentiment Score: <span id="sent"></span></p>
       </div>
     </div>
+  </section>
 
-  </div>
+  <!-- Rewrite Review -->
+  <section id="rewrite" class="section">
+    <h2>Make Review Sound Genuine</h2>
+
+    <textarea id="rewriteInput" placeholder="Paste a poorly written or suspicious review..."></textarea>
+    <button onclick="rewriteReview()">Rewrite Review</button>
+
+    <textarea id="rewriteOutput" placeholder="Improved, natural-sounding review will appear here..." readonly></textarea>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+
+    <input type="text" placeholder="Your Name" />
+    <input type="email" placeholder="Your Email" />
+    <textarea placeholder="Your Message"></textarea>
+    <button>Send Message</button>
+  </section>
+
 </main>
 
 <footer>
-  <p>Fake Review Intelligence Platform • v1.0</p>
+  Fake Review Intelligence Platform • v1.2
 </footer>
 
 <script src="script.js"></script>

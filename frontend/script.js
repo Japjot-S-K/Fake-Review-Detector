@@ -34,6 +34,14 @@ async function analyze() {
       status.style.color = "#22c55e";
     }
 
+    const reasonsList = document.getElementById("reasons");
+    reasonsList.innerHTML = "";
+    data.reasons.forEach(reason => {
+      const li = document.createElement("li");
+      li.innerText = reason;
+      reasonsList.appendChild(li);
+    });
+
     document.getElementById("result").classList.remove("hidden");
 
   } catch (err) {
@@ -48,9 +56,9 @@ function rewriteReview() {
   if (!input) return;
 
   const improved =
-`The product performs as expected and provides reasonable quality for its price.
-Delivery was on time and packaging was satisfactory.
-Overall, the experience was decent and met expectations.`;
+`The product performs as expected and offers reasonable quality for its price.
+Delivery was timely and packaging was satisfactory.
+Overall, the experience met expectations.`;
 
   document.getElementById("rewriteOutput").value = improved;
 }

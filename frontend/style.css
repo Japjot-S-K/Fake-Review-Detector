@@ -1,33 +1,119 @@
-body {
-  font-family: Arial;
-  background: #0f172a;
-  color: white;
+* {
+  box-sizing: border-box;
+  font-family: Inter, Arial, sans-serif;
 }
 
-.container {
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  color: #e5e7eb;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.status.online {
+  background: rgba(34,197,94,0.15);
+  color: #22c55e;
+}
+
+/* Main */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
   max-width: 600px;
-  margin: 80px auto;
-  padding: 20px;
-  background: #1e293b;
-  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 textarea {
   width: 100%;
-  height: 120px;
-  padding: 10px;
+  height: 140px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #020617;
+  color: white;
+  border: 1px solid #1e293b;
+  resize: none;
+  font-size: 14px;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background: #38bdf8;
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 12px;
   border: none;
-  font-size: 16px;
+  background: linear-gradient(135deg, #38bdf8, #3b82f6);
+  color: #020617;
+  font-weight: bold;
   cursor: pointer;
 }
 
-#result {
-  margin-top: 20px;
+button:hover {
+  opacity: 0.9;
 }
+
+/* Loading */
+#loading {
+  margin-top: 15px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+/* Results */
+#result {
+  margin-top: 25px;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.meter .circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #020617 55%, #38bdf8 56%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.details p {
+  margin: 6px 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.hidden {
+  display: none;
+}
+

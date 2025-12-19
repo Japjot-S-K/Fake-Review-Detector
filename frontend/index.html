@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Fake Review Detector</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="container">
+<header>
   <h1>🕵️ Fake Review Detector</h1>
-  <textarea id="review" placeholder="Paste review here..."></textarea>
-  <button onclick="analyze()">Analyze Review</button>
+  <span class="status online">API Online</span>
+</header>
 
-  <div id="result"></div>
-</div>
+<main>
+  <div class="card">
+
+    <textarea id="review" placeholder="Paste a product review here..."></textarea>
+
+    <button onclick="analyze()">Analyze Review</button>
+
+    <div id="loading" class="hidden">Analyzing review...</div>
+
+    <div id="result" class="hidden">
+      <div class="meter">
+        <div class="circle">
+          <span id="credibility">0</span>%
+        </div>
+      </div>
+
+      <div class="details">
+        <p>Status: <span id="status"></span></p>
+        <p>Repetition Score: <span id="rep"></span></p>
+        <p>Sentiment Score: <span id="sent"></span></p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Fake Review Intelligence Platform • v1.0</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
 </html>
+

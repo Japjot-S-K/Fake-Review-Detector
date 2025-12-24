@@ -1,9 +1,28 @@
+/* =========================
+   API ENVIRONMENT SWITCHING
+   ========================= */
+
+const API_BASE =
+  location.hostname === "localhost" ||
+  location.hostname === "127.0.0.1" ||
+  location.protocol === "file:"
+    ? "http://127.0.0.1:5000"
+    : "https://fake-review-detector-f0wz.onrender.com";
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
 function showSection(id) {
   document.querySelectorAll(".section").forEach(sec => {
     sec.classList.remove("active");
   });
   document.getElementById(id).classList.add("active");
 }
+
+/* =========================
+   FAKE REVIEW ANALYSIS
+   ========================= */
 
 async function analyze() {
   const review = document.getElementById("review").value.trim();
@@ -13,7 +32,7 @@ async function analyze() {
   document.getElementById("result").classList.add("hidden");
 
   try {
-    const response = await fetch("https://fake-review-detector-f0wz.onrender.com/analyze", {
+    const response = await fetch(`${API_BASE}/analyze`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ review })
@@ -51,15 +70,25 @@ async function analyze() {
   }
 }
 
-function rewriteReview() {
+/* =========================
+   REVIEW REWRITE (FREE NLP)
+   ========================= */
+
+async function rewriteReview() {
   const input = document.getElementById("rewriteInput").value.trim();
   if (!input) return;
 
-  const improved =
-`The product performs as expected and offers reasonable quality for its price.
-Delivery was timely and packaging was satisfactory.
-Overall, the experience met expectations.`;
+  try {
+    const response = await fetch(`${API_BASE}/rewrite`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ review: input })
+    });
 
-  document.getElementById("rewriteOutput").value = improved;
+    const data = await response.json();
+    document.getElementById("rewriteOutput").value = data.rewritten_review;
+
+  } catch (err) {
+    alert("Unable to rewrite review. Please try again.");
+  }
 }
-

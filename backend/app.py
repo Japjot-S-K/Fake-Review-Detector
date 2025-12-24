@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from detector import analyze_review
+from rewrite import rewrite_review
 
-from backend.detector import analyze_review
-from backend.rewrite import rewrite_review
 
 app = Flask(__name__)
 CORS(app)
@@ -26,3 +26,4 @@ def rewrite():
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+

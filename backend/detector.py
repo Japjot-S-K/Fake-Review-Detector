@@ -52,4 +52,3 @@ def analyze_review(text):
         "is_suspicious": score < 40,
         "reasons": explain_review(text)
     }
-

@@ -8,14 +8,7 @@ This project is built to demonstrate **real-world full-stack development**, not 
 ---
 
 ## 🌐 Live Demo
-
-- **Backend API (Render)**  
-  https://fake-review-detector-f0wz.onrender.com
-
-- **Frontend (Vercel)**  
-  (Add your Vercel deployment URL here)
-
----
+https://fake-review-detector-7ceh7l7mn-japjot-s-ks-projects.vercel.app/
 
 ## ✨ Key Features
 
@@ -203,9 +196,6 @@ This project demonstrates:
 ## 👤 Author
 
 **Japjot Singh Kashyap**  
-GitHub: https://github.com/YOUR_USERNAME
+GitHub: https://github.com/Japjot-S-K
 
----
 
-## 📄 License
-This project is for educational and demonstration purposes.
